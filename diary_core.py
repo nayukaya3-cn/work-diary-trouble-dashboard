@@ -121,10 +121,11 @@ def anonymize(df: pd.DataFrame, names: list[str], orgs: list[str], auto: bool = 
         e = log.setdefault((kind, src), {"種類": kind, "元の語": src, "置換後": dst, "回数": 0, "方法": how})
         e["回数"] += 1
 
-    for w in df["記入者"].dropna():
-        pcode(w)
+    # 辞書の氏名 → 記入者 の順に符号を振る。日誌を後ろに足しても既存の符号（＝判定キー）がずれない
     for n in names:
         pcode(n)
+    for w in df["記入者"].dropna():
+        pcode(w)
     for o in orgs:
         ocode(o)
 
