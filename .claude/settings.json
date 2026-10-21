@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./data/raw/**)",
+      "Read(./data/name_map.csv)"
+    ]
+  }
+}
